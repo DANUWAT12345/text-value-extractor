@@ -1,70 +1,179 @@
-# Getting Started with Create React App
+# Text-Value Input Calculator & Extractor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React application that processes text input to calculate totals and display a detailed billing summary.
 
-## Available Scripts
+## Application Overview
 
-In the project directory, you can run:
+This application allows users to input lines of text with numbers and descriptions. It calculates the totals for each item and displays a billing summary in a table format. It also provides input validation and error handling.
 
-### `npm start`
+## Components
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### `FormikInput`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Handles the form input, validation, and submission.
 
-### `npm test`
+**Key Features:**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Input Parsing:** Users can enter lines of text where each line contains a number and a description.
+- **Validation:** Checks if the input format is correct. Alerts users if the format is invalid.
+- **Calculation:** Evaluates mathematical expressions, sums the values, and prepares the data for the billing summary.
 
-### `npm run build`
+**Usage:**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Enter Input:** 
+   - Input text in the format: `[number] [description]` (e.g., `100 food`, `200/2 transport`).
+   - Supported operations include `+`, `-`, `*`, `/` (e.g., `100+50`, `200/2`).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Submit Input:** 
+   - Click the "Submit" button to process the input.
+   - The application will calculate the totals and display a billing summary.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Reset Data:** 
+   - Click the "Reset" button to clear all input and reset the billing summary.
 
-### `npm run eject`
+4. **Handling Incorrect Input:** 
+   - If the input format is incorrect (e.g., `100cat`), an alert will notify you of the error.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### `BillingSummary`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Displays a detailed billing summary in a table format.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**Key Features:**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Table Display:** Shows the item name, price, subtotal, and total amount.
+- **Subtotal Calculation:** Each item's subtotal is the cumulative sum of the item prices up to that line.
+- **Total Calculation:** Displays the overall total amount.
 
-## Learn More
+**Usage:**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Item Name:** The description of the item, formatted with the first letter capitalized.
+- **Price:** The value of the item as provided in the input.
+- **Subtotal:** The running total for each item.
+- **Total:** The final sum of all item subtotals.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Example Output:**
 
-### Code Splitting
+If the input is:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+100 food
+200/2 drink
+-50 service
 
-### Analyzing the Bundle Size
+The output table will look like this:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+| Item Name | Price | Subtotal | Total |
+|-----------|-------|----------|-------|
+| Food      | 100.00 ฿ | 100.00 ฿ | 100.00 ฿ |
+| Drink     | 100.00 ฿ | 200.00 ฿ | 200.00 ฿ |
+| Service   | -50.00 ฿ | 150.00 ฿ | 150.00 ฿ |
 
-### Making a Progressive Web App
+**Total: 150.00 ฿**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Summary of Functions
 
-### Advanced Configuration
+1. **`FormikInput` Component:**
+   - Validates input format.
+   - Calculates values based on mathematical expressions.
+   - Alerts for invalid input formats.
+   - Submits data and updates the billing summary.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+2. **`BillingSummary` Component:**
+   - Renders a table with item names, prices, subtotals, and total amount.
+   - Displays a summary of calculated values.
 
-### Deployment
+This application provides a straightforward interface for managing and summarizing financial or numerical data input by users.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Author
+Danuwat M.
 
-### `npm run build` fails to minify
+______________________
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# เครื่องคำนวณและการแยกข้อมูลจากข้อความ
+
+แอปพลิเคชัน React ที่ประมวลผลการป้อนข้อความเพื่อคำนวณยอดรวมและแสดงสรุปใบเสร็จรายละเอียด
+
+## ภาพรวมของแอปพลิเคชัน
+
+แอปพลิเคชันนี้อนุญาตให้ผู้ใช้ป้อนบรรทัดของข้อความที่มีตัวเลขและคำอธิบาย แอปพลิเคชันจะคำนวณยอดรวมสำหรับแต่ละรายการและแสดงสรุปใบเสร็จในรูปแบบตาราง นอกจากนี้ยังมีการตรวจสอบความถูกต้องของข้อมูลและการจัดการข้อผิดพลาด
+
+## คอมโพเนนต์
+
+### `FormikInput`
+
+จัดการการป้อนข้อมูล การตรวจสอบความถูกต้อง และการส่งข้อมูล
+
+**คุณสมบัติหลัก:**
+
+- **การแยกข้อมูลป้อนเข้า:** ผู้ใช้สามารถป้อนข้อความที่มีตัวเลขและคำอธิบายในแต่ละบรรทัด
+- **การตรวจสอบความถูกต้อง:** ตรวจสอบว่า รูปแบบของข้อมูลถูกต้องหรือไม่ และจะแจ้งเตือนผู้ใช้หากรูปแบบไม่ถูกต้อง
+- **การคำนวณ:** ประเมินนิพจน์ทางคณิตศาสตร์ บวกค่าต่าง ๆ และเตรียมข้อมูลสำหรับการสรุปใบเสร็จ
+
+**วิธีการใช้งาน:**
+
+1. **ป้อนข้อมูล:** 
+   - ป้อนข้อความในรูปแบบ: `[number] [description]` (เช่น `100 food`, `200/2 transport`)
+   - การดำเนินการที่รองรับได้แก่ `+`, `-`, `*`, `/` (เช่น `100+50`, `200/2`)
+
+2. **ส่งข้อมูล:** 
+   - คลิกปุ่ม "Submit" เพื่อประมวลผลข้อมูล
+   - แอปพลิเคชันจะคำนวณยอดรวมและแสดงสรุปใบเสร็จ
+
+3. **รีเซ็ตข้อมูล:** 
+   - คลิกปุ่ม "Reset" เพื่อล้างข้อมูลทั้งหมดและรีเซ็ตสรุปใบเสร็จ
+
+4. **จัดการข้อผิดพลาดของข้อมูล:** 
+   - หากรูปแบบข้อมูลไม่ถูกต้อง (เช่น `100cat`), จะมีการแจ้งเตือนข้อผิดพลาด
+
+### `BillingSummary`
+
+แสดงสรุปใบเสร็จรายละเอียดในรูปแบบตาราง
+
+**คุณสมบัติหลัก:**
+
+- **การแสดงผลในตาราง:** แสดงชื่อรายการ ราคา ยอดย่อย และยอดรวม
+- **การคำนวณยอดย่อย:** ยอดย่อยของแต่ละรายการจะเป็นผลรวมสะสมของราคาแต่ละรายการจนถึงบรรทัดนั้น
+- **การคำนวณยอดรวม:** แสดงยอดรวมทั้งหมด
+
+**วิธีการใช้งาน:**
+
+- **ชื่อรายการ:** คำอธิบายของรายการ ซึ่งจะมีตัวอักษรตัวแรกเป็นตัวพิมพ์ใหญ่
+- **ราคา:** ค่าของรายการตามที่ระบุในข้อมูล
+- **ยอดย่อย:** ยอดรวมสะสมสำหรับแต่ละรายการ
+- **ยอดรวม:** ผลรวมสุดท้ายของยอดย่อยทั้งหมด
+
+**ตัวอย่างผลลัพธ์:**
+
+หากข้อมูลที่ป้อนคือ:
+
+100 food
+200/2 drink
+-50 service
+
+ตารางผลลัพธ์จะเป็น:
+
+| ชื่อรายการ | ราคา | ยอดย่อย | ยอดรวม |
+|-------------|-------|---------|---------|
+| Food        | 100.00 ฿ | 100.00 ฿ | 100.00 ฿ |
+| Drink       | 100.00 ฿ | 200.00 ฿ | 200.00 ฿ |
+| Service     | -50.00 ฿ | 150.00 ฿ | 150.00 ฿ |
+
+**ยอดรวม: 150.00 ฿**
+
+## สรุปฟังก์ชัน
+
+1. **คอมโพเนนต์ `FormikInput`:**
+   - ตรวจสอบรูปแบบข้อมูล
+   - คำนวณค่าตามนิพจน์ทางคณิตศาสตร์
+   - แจ้งเตือนสำหรับรูปแบบข้อมูลที่ไม่ถูกต้อง
+   - ส่งข้อมูลและอัปเดตสรุปใบเสร็จ
+
+2. **คอมโพเนนต์ `BillingSummary`:**
+   - แสดงตารางที่มีชื่อรายการ ราคา ยอดย่อย และยอดรวม
+   - แสดงสรุปของค่าที่คำนวณ
+
+แอปพลิเคชันนี้ให้ส่วนติดต่อที่ใช้งานง่ายสำหรับการจัดการและสรุปข้อมูลทางการเงินหรือตัวเลขที่ป้อนโดยผู้ใช้
+
+**ผู้เขียน:**  
+Danuwat M.
+
+
